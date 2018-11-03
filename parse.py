@@ -4,15 +4,15 @@ from time import sleep
 import os
 
 
-def load_kanji():
+def load_kanji(csv_file):
     # Means that file already exists and it has data in it
-    if os.path.exists('kanji.csv') and os.path.getsize('kanji.csv') > 0:
+    if os.path.exists(csv_file) and os.path.getsize(csv_file) > 0:
         return
 
     html = get('https://nihongoichiban.com/2011/04/30/complete-list-of-vocabulary-for-the-jlpt-n5/').text
 
     # If file doesn't exist create it
-    csv = open('kanji.csv', 'w+')
+    csv = open(csv_file, 'w+')
     soup = BeautifulSoup(html)
 
     '''
